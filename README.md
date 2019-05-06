@@ -10,8 +10,19 @@ Highlight_animation_SegmentControl
 
 可以和scrollview滑动联动；
 
+#### 调用很简单采用block回调数据
+'''
 
-##### 待添加
+    _seg = [[XPHighlightSegmentControl alloc] initWithFrame:CGRectMake(0, 200, 375, 30) TitleArray:@[@"Ruby",@"Objective-C",@"Swift",@"Java"]];
+    [self.view addSubview:_seg];
+    __weak typeof(self)weakself = self;
+    _seg.buttonBlock = ^(NSInteger index, NSString * _Nonnull title) {
+        NSLog(@"%ld----%@",(long)index,title);
+        [weakself.descoll setContentOffset:CGPointMake(375*index, 0)];
+    };
+'''
+
+#### 待添加
 
 可修改样式；
 
